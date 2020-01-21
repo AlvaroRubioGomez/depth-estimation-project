@@ -3,7 +3,7 @@ preprocessing-of-images/baseline
 preprocessing-of-images/left-crop
 preprocessing-of-images/right-crop
 monodepth2/assets/monodepth2_output
-main/results
+results
 YOLO/weights
 
 #C++.gitignore
