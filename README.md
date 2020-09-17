@@ -4,17 +4,26 @@ This project seeks to explore the field of depth estimation from monocular image
 
 It has been developed by Alvaro Rubio as part of the subject "Computer Vision and Multimedia Analysis" taught by Proff. Nicola Conci in the University of Trento, Italy.
 
-# Introduction
+# Description
 
 To explore depth estimation from monocular images, a first research on te topic was made. From this first research it was conluded that the approach on the topic was twofold. 
 
-On the one hand, we had the visual slam approach. Visual Simultaneous Localization And Mapping refers to the process of determining the position and orientation of a camera with respect to its surroundings, while simultaneously mapping the environment around that camera. Determining the position and orientation implies determining the depth of each point around the camera. There are many monocular SLAM systems (PTAM, MonoSLAM, SVO, DTAM, ORB-SLAM, etc) depending on the number of pixels used and the use of extracted features or pixel intesity.
+On the one hand, we had the visual slam approach. Visual Simultaneous Localization And Mapping refers to the process of determining the position and orientation of a camera with respect to its surroundings, while simultaneously mapping the environment around that camera. Determining the position and orientation implies determining the depth of each point around the camera. There are many monocular SLAM systems (PTAM, MonoSLAM, SVO, DTAM, ORB-SLAM, etc) depending on the pixel density used and whether they are based on extracted features or pixel intesities.
 
-On the other hand, we had deep learning approaches. In this field we found 
+On the other hand, we had deep learning approaches. In this field we can found many different approaches. However, we focused in two final options. Pydnet (https://github.com/mattpoggi/pydnet) and monodepth2 (https://github.com/nianticlabs/monodepth2). Both systems cast depth prediction as an image reconstruction problem, i.e, by using a database of stereo images these systems are trained to reconstruct a right image from a left image and viceversa. 
+Althought our initial approach was to compare the accuracy of both neural networks, we decided to focus on the monodepth2. Nevertheless, the code developed does not requires any changes to be used with the output images from pydnet or any other depth-coded image.
+
+Then, we create our own baseline of images. By the means of an stereo camera we took images of a single subject at different distances and wearing different outfits. The idea behind this was to check if there was a colour dependency on the depth estimation made by the neural network. The subject is located at 11 positions at 7 different distances as it is described in the image below.
+
+Outfits 
+
+These images can be consulted at the download section under the name of "Baseline".
 
 
 
-## Description of files
+
+
+# Description of files
 ### YOLO
 Yolo algorithm code.
 Create folder inside called "weights" and add the weight file from the download section before running the algorithm.
@@ -33,7 +42,7 @@ Jupyter notebook. It includes the main code of this project. It is coded in an e
 ### contour-approach.ipynb
 Jupyter notebook. It includes a different approach for solving our problem based on cropping the contour of the subject. It was discarded due to its unreliability.
 
-## Download
+# Download
 [`YOLO weights`](https://mega.nz/#F!RUBB3YYJ!pbAz28PVzJnN4Vuq4KA5mg)
 
 [`Baseline`](https://mega.nz/#F!9NQVkS7T!tasTrvKYt0w4h2sUOlsJJA) 
