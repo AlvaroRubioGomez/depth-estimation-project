@@ -13,14 +13,13 @@ On the one hand, we had the visual slam approach. Visual Simultaneous Localizati
 On the other hand, we had deep learning approaches. In this field we can found many different approaches. However, we focused in two final options. Pydnet (https://github.com/mattpoggi/pydnet) and monodepth2 (https://github.com/nianticlabs/monodepth2). Both systems cast depth prediction as an image reconstruction problem, i.e, by using a database of stereo images these systems are trained to reconstruct a right image from a left image and viceversa. 
 Althought our initial approach was to compare the accuracy of both neural networks, we decided to focus on the monodepth2. Nevertheless, the code developed does not requires any changes to be used with the output images from pydnet or any other depth-coded image.
 
-Then, we create our own baseline of images. By the means of an stereo camera we took images of a single subject at different distances and wearing different outfits. The idea behind this was to check if there was a colour dependency on the depth estimation made by the neural network. The subject is located at 11 positions at 7 different distances as it is described in the image below.
+Then, we create our own baseline of images. By the means of an stereo camera we took images of a single subject at different distances and wearing different outfits. The idea behind this was to check if there was a colour dependency on the depth estimation made by the neural network. The subject is located at 11 positions at 7 different distances as it is described in the image below. These images can be consulted at the download section under the name of "Baseline".
 
-Outfits 
+Distances images 
 
-These images can be consulted at the download section under the name of "Baseline".
+Afterwards, we crop our stereo images in two monocular images and run them through the monodepth2 network to obtain the depth estimation. Colour-coded images from the monodepth2 can be consulted at the download section under the name of "Monodepth2 output". 
 
-
-
+We develop an algorithm to isolate the depth of the subject as well as calculate the regression model for each set of images. There are 12 set of images. Three different colours, two different camera positions and two different control points. Details can be consulted at "main.ipynb", were the code and thought process is explained step by step, as well as the conclussions and future work.
 
 
 # Description of files
@@ -51,7 +50,7 @@ Jupyter notebook. It includes a different approach for solving our problem based
 
 [`monodepth2 output`](https://mega.nz/#F!kZQxRIKA!5pk7LA8qsHgg0moKPXFIgw) 
 
-[`Results`](https://mega.nz/#F!FcZxwYyI!bRNRo3cnsVaOSvpLedlm2g) 
+[`Results`](https://mega.nz/folder/kNg1GZLI#D6-u1qDQVVRm4M-GJeUofw) 
 
-[`Test`](
+[`Test`](https://mega.nz/folder/gIxxBTbR#r0KMgDub4VAYt6su8TrX_g)
 
