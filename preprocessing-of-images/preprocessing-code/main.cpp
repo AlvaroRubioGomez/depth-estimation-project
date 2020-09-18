@@ -8,22 +8,38 @@
 
 #include "ImageTransform.h"
 #include "uiuc/PNG.h"
-#include<stdio.h>
-#include<cstdlib>
-#include<iostream>
-#include<string.h>
-#include<fstream>
-#include<dirent.h>
-#include "utils.cpp"
+#include <stdio.h>
+#include <cstdlib>
+#include <iostream>
+#include <string.h>
+#include <fstream>
+#include <dirent.h>
+
+std::string getFileName(std::string fileFullName){
+    size_t firstChar = fileFullName.find_last_of("/") + 1; //first char after last "/"
+    std::string fileName = fileFullName.substr(firstChar);
+
+    return fileName;
+}
+
+std::string getFileExtension(std::string fileFullName){
+    size_t firstChar = fileFullName.find_last_of(".") + 1; //first char after last "/"
+    std::string fileExtension = fileFullName.substr(firstChar);
+
+    return fileExtension;
+}
 
 int main() {
-
+  printf("entro");
   //Directories
-  char *dirOriginal = "/home/alvaro/Project CV/preprocessing-of-images/baseline/";
-  std::string dirLeft = "/home/alvaro/Project CV/preprocessing-of-images/left-crop/";
-  std::string dirRight = "/home/alvaro/Project CV/preprocessing-of-images/right-crop/";
+  // char *dirOriginal = "/home/alvaro/Project CV/preprocessing-of-images/baseline/";
+  // std::string dirLeft = "/home/alvaro/Project CV/preprocessing-of-images/left-crop/";
+  // std::string dirRight = "/home/alvaro/Project CV/preprocessing-of-images/right-crop/";
+
+  char *dirOriginal = "/home/alvaro/depth-estimation-project/preprocessing-of-images/test/";
+  std::string dirLeft = "/home/alvaro/depth-estimation-project/preprocessing-of-images/test_result/";
+  std::string dirRight = "/home/alvaro/depth-estimation-project/preprocessing-of-images/test_result/";
  
-  //
   uiuc::PNG png_original, png_crop_left, png_crop_right; 
 
   //Loop through files in a folder
@@ -44,12 +60,18 @@ int main() {
         //Crop left        
         png_crop_left = PNG(png_original);
         png_crop_left.crop(png_original.width()/2,0,png_original.width(),png_original.height());
+        //normalize
+        png_crop_left.normalize_lighting();
+        //Save file
         if (png_crop_left.writeToFile(dirLeft + fileName)){
           std::cout << "---> Left crop completed. " << std::endl;
         }
         //Crop Right        
         png_crop_right = PNG(png_original);
         png_crop_right.crop(png_original.width()/2,0,png_original.width(),png_original.height());
+        //normalize
+        png_crop_right.normalize_lighting();
+        //Save file
         if(png_crop_right.writeToFile(dirRight + fileName)){
           std::cout << "---> Right crop completed. " << std::endl;
         }
@@ -62,23 +84,6 @@ int main() {
   /* could not open directory */
   perror ("");
   return EXIT_FAILURE;
-  }
-  
-  // string cdLeft, cdRight;
-  // cdLeft = "/home/alvaro/Project CV/preprocessing-of-images/left-crop/";
-  // cdRight = "/home/alvaro/Project CV/preprocessing-of-images/right-crop/";
-
-  // uiuc::PNG png_original, png_crop_left, png_crop_right;
-  // std::string fileFullName = "/home/alvaro/Project CV/preprocessing-of-images/images-taken/Explorer_HD1080_SN15489_16-07-59.png";
-  // //test for name
-  
-  // std::cout << getFileName(fileFullName) << std::endl;
-
-  // png_original.readFromFile(fileFullName);
- 
-  // png_crop_left = PNG(png_original);
-  // png_crop_left.crop(png_original.width()/2,0,png_original.width(),png_original.height());
-  // png_crop_left.writeToFile(cdLeft + "test1.png");
-  
+  }  
   return 0;
 }

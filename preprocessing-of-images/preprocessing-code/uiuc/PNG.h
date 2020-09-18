@@ -119,6 +119,11 @@ namespace uiuc {
     void crop(unsigned int ULX, unsigned int ULY ,unsigned int DRX, unsigned int DRY);
 
     /**
+    * Transform image into a normalized version
+    */
+    void normalize_lighting();
+  
+    /**
      * Computes a hash of the contents of the image.
      */
     std::size_t computeHash() const;
@@ -138,4 +143,3 @@ namespace uiuc {
   std::ostream & operator<<(std::ostream & out, PNG const & pixel);
   std::stringstream & operator<<(std::stringstream & out, PNG const & pixel);
 }
-

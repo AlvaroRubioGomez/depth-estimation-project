@@ -5,6 +5,7 @@ preprocessing-of-images/right-crop
 monodepth2/assets/monodepth2_output
 results
 YOLO/weights
+test
 
 #C++.gitignore
 

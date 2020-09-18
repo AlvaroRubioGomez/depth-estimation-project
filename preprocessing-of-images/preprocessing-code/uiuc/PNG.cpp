@@ -221,6 +221,41 @@ namespace uiuc {
     else{printf("crop function error: Wrong input values");}
   }
 
+  void PNG::normalize_lighting(){
+    //variables
+    unsigned int n_rows = this->height_;
+    unsigned int n_cols = this->width_;
+    double min_L = 99;
+    double max_L = 0;
+    double old_L,new_L;
+    //Create normalized image container
+    //HSLAPixel * newImageData = new HSLAPixel[n_cols*n_rows];
+
+    //Loop to get the max and min of lighting of the image    
+    for(unsigned int x=0;x<n_cols;x++){
+      for(unsigned int y=0;y<n_rows;y++){
+        HSLAPixel & pixel = this->getPixel(x, y);
+        if(pixel.l < min_L){
+          min_L = pixel.l;
+        }
+        else if(pixel.l > max_L){
+          max_L = pixel.l;
+        }
+      }
+    }
+    std::cout << "min and max L:" << min_L << ", " << max_L << std::endl;
+
+    //Normalize lighting
+    for(unsigned int x=0;x<n_cols;x++){
+      for(unsigned int y=0;y<n_rows;y++){
+        HSLAPixel & pixel = this->getPixel(x, y);
+        //HSLAPixel & newPixel = newImageData[x + y*n_cols];
+        //pixel.l = (pixel.l - min_L)/(max_L - min_L);
+        pixel.l = 1.3*pixel.l;
+      }
+    }
+  }
+
   std::size_t PNG::computeHash() const {
     std::hash<float> hashFunction;
     std::size_t hash = 0;
@@ -245,5 +280,4 @@ namespace uiuc {
   }
 
 }
-
 
