@@ -1,5 +1,7 @@
 # Abstract
 
+![title](images/thumbnail.jpg)
+
 This project seeks to explore the field of depth estimation from monocular images.
 
 It has been developed by Alvaro Rubio as part of the subject "Computer Vision and Multimedia Analysis" taught by Proff. Nicola Conci in the University of Trento, Italy.
