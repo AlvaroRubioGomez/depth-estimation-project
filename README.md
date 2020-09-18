@@ -15,7 +15,7 @@ Althought our initial approach was to compare the accuracy of both neural networ
 
 Then, we create our own baseline of images. By the means of an stereo camera we took images of a single subject at different distances and wearing different outfits. The idea behind this was to check if there was a colour dependency on the depth estimation made by the neural network. The subject is located at 11 positions at 7 different distances as it is described in the image below. These images can be consulted at the download section under the name of "Baseline".
 
-Distances images 
+![title](images/positions.JPG)
 
 Afterwards, we crop our stereo images in two monocular images and run them through the monodepth2 network to obtain the depth estimation. Colour-coded images from the monodepth2 can be consulted at the download section under the name of "Monodepth2 output". 
 
